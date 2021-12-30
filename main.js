@@ -1,31 +1,36 @@
 "use strict";
 
-//dom selectors
+//dom cache
 const list = document.querySelector(".list");
 const addBtn = document.querySelector(".btn--add");
 const listInput = document.querySelector(".list-input");
 
-//e listeners
+//event listeners
 addBtn.addEventListener("click", addListItem);
-listInput.addEventListener("keyup", function (e) {
+listInput.addEventListener("keydown", function (e) {
   if (e.keyCode === 13) {
     addBtn.click();
   }
 });
-//fns
+
+//functions
 
 function addListItem() {
   const listValue = listInput.value;
-  const listItem = document.createElement("li");
-  listItem.classList.add("list-item");
-  listItem.textContent = listValue;
-  list.appendChild(listItem);
-  const deleteBtn = document.createElement("button");
-  deleteBtn.classList.add("btn");
-  deleteBtn.innerText = "X";
-  listItem.appendChild(deleteBtn);
-  deleteBtn.addEventListener("click", deleteItem);
-  listInput.value = "";
+  if (listValue == "") {
+    alert("Enter text first before adding to list");
+  } else {
+    const listItem = document.createElement("li");
+    listItem.classList.add("list-item");
+    listItem.textContent = listValue;
+    list.appendChild(listItem);
+    const deleteBtn = document.createElement("button");
+    deleteBtn.classList.add("btn");
+    deleteBtn.innerText = "X";
+    listItem.appendChild(deleteBtn);
+    deleteBtn.addEventListener("click", deleteItem);
+    listInput.value = "";
+  }
 }
 
 function deleteItem(e) {
