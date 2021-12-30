@@ -30,7 +30,7 @@ function addListItem() {
 
 function deleteItem(e) {
   const itemDelete = e.target.parentElement;
-  itemDelete.classList.add("item-delete"); //adds animation but will need to do before delete
+  itemDelete.classList.add("item-delete"); //adds animation before delete
   itemDelete.addEventListener("transitionend", function () {
     itemDelete.remove();
   });
