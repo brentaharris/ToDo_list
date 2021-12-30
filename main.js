@@ -7,6 +7,11 @@ const listInput = document.querySelector(".list-input");
 
 //e listeners
 addBtn.addEventListener("click", addListItem);
+listInput.addEventListener("keyup", function (e) {
+  if (e.keyCode === 13) {
+    addBtn.click();
+  }
+});
 //fns
 
 function addListItem() {
